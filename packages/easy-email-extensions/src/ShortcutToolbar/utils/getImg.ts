@@ -48,7 +48,7 @@ const defaultImagesMap = {
   IMAGE_30:
     'https://easy-email-m-ryan.vercel.app/images/84014a93-429c-479c-b9ed-0c568f58a288-ca76cdf2-92d3-4552-bc95-3a8dd4c9cd0b.png',
   IMAGE_31:
-    'https://easy-email-m-ryan.vercel.app/images/dd1584fb-cb60-42c9-80c7-5545e16130ca-226ba72b-ce9e-4948-ad0d-347381fb96c5.png',
+    'https://www.dancemeetup.com/images/general/fruit_chocolate_04.jpg',
   IMAGE_32:
     'https://easy-email-m-ryan.vercel.app/images/76e3d8e2-697d-484c-a989-715bd234b575-37bde239-2e2d-450a-8e93-d62c39cb94a3.png',
   IMAGE_33:

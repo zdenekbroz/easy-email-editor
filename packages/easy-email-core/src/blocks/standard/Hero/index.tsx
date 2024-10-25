@@ -48,7 +48,7 @@ export const Hero = createBlock<IHero>({
           type: 'text',
           data: {
             value: {
-              content: 'We Serve Healthy &amp; Delicious Foods',
+              content: 'Change header',
             },
           },
           attributes: {
@@ -65,7 +65,7 @@ export const Hero = createBlock<IHero>({
           data: {
             value: {
               content:
-                'A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.<br>',
+                'Change the text ...',
             },
           },
           attributes: {
@@ -90,7 +90,7 @@ export const Hero = createBlock<IHero>({
           type: 'button',
           data: {
             value: {
-              content: 'Get Your Order Here!',
+              content: 'Button text',
             },
           },
           attributes: {

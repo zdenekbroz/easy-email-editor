@@ -18,19 +18,19 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
-    "@types/file-saver": "^2.0.5",
-    "cloudinary": "^1.41.2",
+    "@types/file-saver": "^2.0.7",
+    "cloudinary": "^1.41.3",
     "easy-localized-translation": "^1.1.0",
     "file-saver": "^2.0.5",
     "lerna": "^4.0.0",
-    "liquidjs": "^9.34.1",
-    "posthog-js": "^1.76.0"
+    "liquidjs": "^9.43.0",
+    "posthog-js": "^1.176.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.1",
-    "@types/lodash": "^4.14.191",
-    "@types/node": "^18.8.4",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "dotenv": "^16.0.3"
+    "@types/fs-extra": "^11.0.4",
+    "@types/lodash": "^4.17.12",
+    "@types/node": "^18.19.59",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "dotenv": "^16.4.5"
   }
 }
