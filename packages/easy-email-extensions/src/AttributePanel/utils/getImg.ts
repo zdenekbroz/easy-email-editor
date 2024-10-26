@@ -6,7 +6,7 @@ const defaultImagesMap = {
   AttributePanel_01:
     'https://easy-email-m-ryan.vercel.app/images/e22f78f2-aa76-408d-ba94-c95c7abe1908-image.png',
   AttributePanel_02:
-    'https://www.dancemeetup.com/images/general/attribute_panel_02.png',
+    '/images/general/attribute_panel_02.png',
   AttributePanel_03:
     'https://easy-email-m-ryan.vercel.app/images/Fi_vI4vyLhTM-Tp6ivq4dR_ieGHk.png',
 };

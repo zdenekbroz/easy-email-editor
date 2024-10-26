@@ -4,11 +4,11 @@ const defaultImagesMap = {
   IMAGE_01:
     'https://easy-email-m-ryan.vercel.app/images/ffddc3db-3aae-4d73-ac9c-e1263641f7b4-03c89c34-49a4-4d45-b289-4d2261158cbe.png',
   IMAGE_02:
-    'https://dancemeetup.com/images/system/facebook.png',
+    '/images/system/facebook.png',
   IMAGE_03:
-    'https://dancemeetup.com/images/system/instagram.png',
+    '/images/system/instagram.png',
   IMAGE_04:
-    'https://dancemeetup.com/images/system/youtube.png',
+    '/images/system/youtube.png',
   IMAGE_59:
     'https://easy-email-m-ryan.vercel.app/images/8e0e07e2-3f84-4426-84c1-2add355c558b-image.png',
   IMAGE_09:
@@ -22,7 +22,7 @@ const defaultImagesMap = {
   IMAGE_17:
     'https://easy-email-m-ryan.vercel.app/images/d9795c1d-fa32-4adb-ab25-30b7cfe87936-df21314f-6f05-4550-80b3-9ab1107e8fbe.png',
   IMAGE_31:
-    'https://www.dancemeetup.com/images/general/fruit_chocolate_04.jpg',
+    '/images/general/fruit_chocolate_04.jpg',
 };
 
 ImageManager.add(defaultImagesMap);
