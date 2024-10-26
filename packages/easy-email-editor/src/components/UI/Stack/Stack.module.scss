@@ -1,4 +1,3 @@
-
 $polaris-spacing: (
   'none': 0,
   'extra-tight': 4px,
@@ -21,9 +20,11 @@ $base-font-size: 10px;
 @function spacing($variant: base) {
   $fetched-value: map-get($spacing-data, $variant);
 
-  @if type-of($fetched-value) == number {
+  @if type-of($fetched-value)==number {
     @return $fetched-value;
-  } @else {
+  }
+
+  @else {
     @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}';
   }
 }
@@ -31,7 +32,8 @@ $base-font-size: 10px;
 @mixin stack-spacing($spacing: base) {
   margin-top: -1 * spacing($spacing);
   margin-left: -1 * spacing($spacing);
-  > .Item {
+
+  >.Item {
     margin-top: spacing($spacing);
     margin-left: spacing($spacing);
     max-width: 100%;
@@ -85,11 +87,11 @@ $base-font-size: 10px;
   justify-content: space-between;
 }
 
-.distributionFill > .Item {
+.distributionFill>.Item {
   flex: 1 1 auto;
 }
 
-.distributionFillEvenly > .Item {
+.distributionFillEvenly>.Item {
   flex: 1 1 auto;
 
   @supports (min-width: fit-content) {
@@ -122,7 +124,7 @@ $base-font-size: 10px;
   flex-direction: column;
   margin-left: spacing(none);
 
-  > .Item {
+  >.Item {
     margin-left: spacing(none);
   }
 }
