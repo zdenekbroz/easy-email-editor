@@ -33,7 +33,7 @@ export type IButton = IBlockData<
     'text-decoration'?: string;
     'text-transform'?: string;
   },
-  { content: string }
+  { content: string; }
 >;
 
 export const Button = createBlock<IButton>({
@@ -51,7 +51,7 @@ export const Button = createBlock<IButton>({
       },
       attributes: {
         align: 'center',
-        'background-color': '#414141',
+        'background-color': '#3498db',
         color: '#ffffff',
         'font-weight': 'normal',
         'border-radius': '3px',
