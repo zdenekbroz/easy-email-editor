@@ -59,6 +59,27 @@ export function DesktopEmailPreview() {
                 }
               `}
           </style>
+          <style>
+            {`
+                  .text-dynamic-data {
+                    outline: 1px solid rgb(78, 89, 105);
+                    outline-offset: 1px;
+                    padding: 0 2px;
+                    border-radius: 2px;
+                    transition: all 0.1s linear;
+                    border: none;
+                    font-weight: inherit;
+                    outline-color: #00a0ac;
+                    color: #202020;
+                    background-color: #ebf9fc;
+                    max-width: 10em;
+                    font-style: inherit;
+                    text-decoration-line: inherit;
+                    position: relative;
+                    cursor: pointer;
+                  }
+              `}
+          </style>
           <div
             className={classnames('preview-container', SYNC_SCROLL_ELEMENT_CLASS_NAME)}
             style={{

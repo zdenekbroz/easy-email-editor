@@ -4,11 +4,11 @@ const defaultImagesMap = {
   IMAGE_01:
     'https://easy-email-m-ryan.vercel.app/images/ffddc3db-3aae-4d73-ac9c-e1263641f7b4-03c89c34-49a4-4d45-b289-4d2261158cbe.png',
   IMAGE_02:
-    '/images/system/facebook.png',
+    'https://www.dancemeetup.com/images/system/facebook.png',
   IMAGE_03:
-    '/images/system/instagram.png',
+    'https://www.dancemeetup.com/images/system/instagram.png',
   IMAGE_04:
-    '/images/system/youtube.png',
+    'https://www.dancemeetup.com/images/system/youtube.png',
   IMAGE_59:
     'https://easy-email-m-ryan.vercel.app/images/8e0e07e2-3f84-4426-84c1-2add355c558b-image.png',
   IMAGE_09:

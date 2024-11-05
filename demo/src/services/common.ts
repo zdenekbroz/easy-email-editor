@@ -9,9 +9,10 @@ export const common = {
     data.append('file', file);
     data.append('upload_preset', 'easy-email-test');
 
-    const res = await axios.post<{ url: string }>(CLOUDINARY_URL, data);
+    const res = await axios.post<{ url: string; }>(CLOUDINARY_URL, data);
     return res.data.url;
   },
+
   uploadByUrl(url: string) {
     return request.get<string>('/upload/user/upload-by-url', {
       params: {
@@ -19,6 +20,7 @@ export const common = {
       },
     });
   },
+
   getMenu(): Promise<IAppMenuItem[]> {
     return Promise.resolve([
       {
@@ -34,7 +36,8 @@ export const common = {
       },
     ]);
   },
-  sendTestEmail(data: { toEmail: string; subject: string; html: string; text: string }) {
+
+  sendTestEmail(data: { toEmail: string; subject: string; html: string; text: string; }) {
     return request.post('/email/user/send', {
       to_email: data.toEmail,
       subject: data.subject,

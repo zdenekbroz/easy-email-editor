@@ -23,12 +23,12 @@
     "easy-localized-translation": "^1.1.0",
     "file-saver": "^2.0.5",
     "liquidjs": "^10.18.0",
-    "posthog-js": "^1.178.0"
+    "posthog-js": "^1.181.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.17.13",
-    "@types/node": "^18.19.62",
+    "@types/node": "^18.19.64",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "dotenv": "^16.4.5",
     "lerna": "^8.1.9"
