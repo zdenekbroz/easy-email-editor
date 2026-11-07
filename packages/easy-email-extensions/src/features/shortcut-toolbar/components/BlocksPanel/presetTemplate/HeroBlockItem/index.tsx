@@ -59,7 +59,7 @@ const heroList = [
           type: 'text',
           data: {
             value: {
-              content: 'We Serve Healthy &amp; Delicious Foods',
+              content: 'Change header',
             },
           },
           attributes: {
@@ -76,7 +76,7 @@ const heroList = [
           data: {
             value: {
               content:
-                'A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.<br>',
+                'Change the text ...',
             },
           },
           attributes: {
@@ -92,7 +92,7 @@ const heroList = [
           type: 'button',
           data: {
             value: {
-              content: 'Get Your Order Here!',
+              content: 'Button text',
             },
           },
           attributes: {
