@@ -16,12 +16,22 @@ import {
 
 let count = 0;
 export function MjmlDomRender() {
-  const { pageData: content } = useEditorContext();
+  const { pageData: content, setInitialized } = useEditorContext();
   const [pageData, setPageData] = useState<IPage | null>(null);
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
   const { dashed, mergeTags, enabledMergeTagsBadge } = useEditorProps();
   const [isTextFocus, setIsTextFocus] = useState(false);
   const { isDarkMode } = useDarkMode();
+  const [html, setHtml] = useState('');
+  const [renderError, setRenderError] = useState('');
+
+  useEffect(() => {
+    setInitialized(!renderError && Boolean(ref?.querySelector('body')));
+  }, [html, ref, renderError, setInitialized]);
+
+  useEffect(() => {
+    return () => setInitialized(false);
+  }, [setInitialized]);
 
   const isTextFocusing =
     document.activeElement === getEditorRoot() &&
@@ -72,8 +82,16 @@ export function MjmlDomRender() {
     };
   }, []);
 
-  const html = useMemo(() => {
-    if (!pageData) return '';
+  useEffect(() => {
+    let cancelled = false;
+    if (!pageData) {
+      setHtml('');
+      setRenderError('');
+      return () => {
+        cancelled = true;
+      };
+    }
+    setRenderError('');
 
     const renderPageData =
       isDarkMode && pageData.data.value['text-color'] === LIGHT_TEXT_COLOR
@@ -89,16 +107,33 @@ export function MjmlDomRender() {
           }
         : pageData;
 
-    const renderHtml = mjml(
-      JsonToMjml({
-        data: renderPageData,
-        idx: getPageIdx(),
-        context: renderPageData,
-        mode: 'testing',
-        dataSource: cloneDeep(mergeTags),
-      }),
-    ).html;
-    return renderHtml;
+    const render = async () => {
+      try {
+          const { html: renderHtml } = await mjml(
+            JsonToMjml({
+              data: renderPageData,
+              idx: getPageIdx(),
+              context: renderPageData,
+              mode: 'testing',
+              dataSource: cloneDeep(mergeTags),
+            }),
+          );
+          if (!cancelled) {
+            setHtml(renderHtml);
+            setRenderError('');
+          }
+      } catch (error) {
+          if (!cancelled) {
+            setHtml('');
+            setRenderError(error instanceof Error ? error.message : String(error));
+          }
+      }
+    };
+
+    void render();
+    return () => {
+      cancelled = true;
+    };
   }, [isDarkMode, mergeTags, pageData]);
 
   return useMemo(() => {
@@ -117,15 +152,18 @@ export function MjmlDomRender() {
         tabIndex={0}
       >
         <>
-          {ref &&
+          {renderError ? (
+            <div role='alert'>{renderError}</div>
+          ) : ref && html ? (
             createPortal(
               HtmlStringToReactNodes(html, {
                 enabledMergeTagsBadge: Boolean(enabledMergeTagsBadge),
               }),
               ref,
-            )}
+            )
+          ) : null}
         </>
       </div>
     );
-  }, [dashed, ref, html, enabledMergeTagsBadge]);
+  }, [dashed, ref, html, renderError, enabledMergeTagsBadge]);
 }

@@ -2,7 +2,9 @@ import { BlockManager,IPage, BasicType, IBlockData } from 'easy-email-core';
 import { identity, isString, pickBy } from 'lodash';
 import { parseXMLtoBlock } from './parseXMLtoBlock';
 
-export function MjmlToJson(data: MjmlBlockItem | string): IPage {
+export function MjmlToJson(data: MjmlBlockItem): IPage;
+export function MjmlToJson(data: string): Promise<IPage>;
+export function MjmlToJson(data: MjmlBlockItem | string): IPage | Promise<IPage> {
   if (isString(data)) return parseXMLtoBlock(data);
 
   const transform = (item: IChildrenItem): IBlockData => {

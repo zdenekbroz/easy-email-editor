@@ -1,16 +1,16 @@
 import mjml from 'mjml-browser';
-import { IBlockData, BlockType, BasicType, BlockManager } from 'easy-email-core';
+import { IBlockData, IPage, BlockType, BasicType, BlockManager } from 'easy-email-core';
 import { MjmlToJson } from './MjmlToJson';
 
 const domParser = new DOMParser();
-export function parseXMLtoBlock(text: string) {
+export async function parseXMLtoBlock(text: string): Promise<IPage> {
   const dom = domParser.parseFromString(text, 'text/xml');
   const root = dom.firstChild as Element;
   if (!(dom.firstChild instanceof Element)) {
     throw new Error('Invalid content');
   }
   if (root.tagName === 'mjml') {
-    const { json } = mjml(text, {
+    const { json } = await mjml(text, {
       validationLevel: 'soft',
     });
     const parseValue = MjmlToJson(json);

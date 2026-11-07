@@ -61,10 +61,10 @@ export function SourceCodePanel({ jsonReadOnly, mjmlReadOnly }: { jsonReadOnly: 
   );
 
   const onMjmlChange = useCallback(
-    (event: React.FocusEvent<HTMLTextAreaElement>) => {
+    async (event: React.FocusEvent<HTMLTextAreaElement>) => {
       if(!mjmlReadOnly){
         try {
-          const parseValue = MjmlToJson(event.target.value);
+          const parseValue = await MjmlToJson(event.target.value);
           if (parseValue.type !== BasicType.PAGE) {
             const parentBlock = getParentByIdx(values, focusIdx)!;
             const parseBlock = BlockManager.getBlockByType(parseValue.type);

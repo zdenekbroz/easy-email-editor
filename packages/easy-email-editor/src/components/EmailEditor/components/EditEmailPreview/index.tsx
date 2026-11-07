@@ -4,7 +4,6 @@ import { useDropBlock } from '@/hooks/useDropBlock';
 import { useHotKeys } from '@/hooks/useHotKeys';
 import { SyncScrollShadowDom } from '@/components/UI/SyncScrollShadowDom';
 import { ShadowStyle } from './components/ShadowStyle';
-import { useEditorContext } from '@/hooks/useEditorContext';
 import { DATA_ATTRIBUTE_DROP_CONTAINER, SYNC_SCROLL_ELEMENT_CLASS_NAME } from '@/constants';
 import { classnames } from '@/utils/classnames';
 import { ActiveTabKeys } from '@/components/Provider/BlocksProvider';
@@ -16,17 +15,9 @@ export function EditEmailPreview() {
   const { setRef } = useDropBlock();
   const { activeTab } = useActiveTab();
 
-  const { setInitialized } = useEditorContext();
-
   useEffect(() => {
     setRef(containerRef);
   }, [containerRef, setRef]);
-
-  useEffect(() => {
-    if (containerRef) {
-      setInitialized(true);
-    }
-  }, [containerRef, setInitialized]);
 
   return useMemo(
     () => (

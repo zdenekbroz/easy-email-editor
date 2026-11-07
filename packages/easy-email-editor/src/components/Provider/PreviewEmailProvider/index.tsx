@@ -3,7 +3,7 @@ import { useEditorProps } from '@/hooks/useEditorProps';
 import { useLazyState } from '@/hooks/useLazyState';
 import { HtmlStringToPreviewReactNodes } from '@/utils/HtmlStringToPreviewReactNodes';
 import { JsonToMjml } from 'easy-email-core';
-import { cloneDeep, isString } from 'lodash';
+import { cloneDeep } from 'lodash';
 import mjml from 'mjml-browser';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -50,6 +50,8 @@ export const PreviewEmailProvider: React.FC<{ children?: React.ReactNode; }> = p
   }, [mergeTags, previewInjectData]);
 
   useEffect(() => {
+    let cancelled = false;
+
     const breakpoint = parseInt(lazyPageData.data.value.breakpoint || '0');
     let adjustBreakPoint = breakpoint;
     if (breakpoint > 360) {
@@ -69,40 +71,43 @@ export const PreviewEmailProvider: React.FC<{ children?: React.ReactNode; }> = p
         },
       },
     };
-    let parseHtml = mjml(
-      JsonToMjml({
-        data: cloneData,
-        mode: 'production',
-        context: cloneData,
-        dataSource: cloneDeep(injectData),
-      }),
-    ).html;
-
-    parseHtml = parseHtml.replace('</head>', PREVIEW_BASE_CSS + (isDarkMode ? DARK_EMAIL_CSS : '') + '</head>');
-
-    if (onBeforePreview) {
+    const renderPreview = async () => {
+      setHtml('');
+      setErrMsg('');
       try {
-        const result = onBeforePreview(parseHtml, injectData);
-        if (isString(result)) {
-          parseHtml = result;
-          setHtml(parseHtml);
-        } else {
-          result.then(resHtml => {
-            parseHtml = resHtml;
-            setHtml(parseHtml);
-          });
+        let parseHtml = (
+          await mjml(
+            JsonToMjml({
+              data: cloneData,
+              mode: 'production',
+              context: cloneData,
+              dataSource: cloneDeep(injectData),
+            }),
+          )
+        ).html;
+
+        parseHtml = parseHtml.replace(
+          '</head>',
+          PREVIEW_BASE_CSS + (isDarkMode ? DARK_EMAIL_CSS : '') + '</head>',
+        );
+
+        if (onBeforePreview) {
+          parseHtml = await onBeforePreview(parseHtml, injectData);
         }
 
-        setErrMsg('');
-      } catch (error: any) {
-        setErrMsg(error?.message || error);
+        if (!cancelled) {
+          setHtml(parseHtml);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setErrMsg(error instanceof Error ? error.message : String(error));
+        }
       }
-    } else {
-      setHtml(parseHtml);
-    }
+    };
 
+    void renderPreview();
     return () => {
-      setHtml('');
+      cancelled = true;
     };
   }, [injectData, onBeforePreview, lazyPageData, mobileWidth, isDarkMode]);
 

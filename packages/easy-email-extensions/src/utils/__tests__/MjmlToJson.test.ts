@@ -87,11 +87,9 @@ const mjmlText = `
 `;
 
 describe('Test parseXml', () => {
-  const instance = MjmlToJson(
-    mjml(mjmlText as any, { validationLevel: 'strict' }).json
-  );
-
-  it('should render  as expected', () => {
+  it('should render  as expected', async () => {
+    const { json } = await mjml(mjmlText, { validationLevel: 'strict' });
+    const instance = MjmlToJson(json);
     expect(instance).toMatchSnapshot();
   });
 });

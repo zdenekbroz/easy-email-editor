@@ -5,7 +5,7 @@ Object {
   "attributes": Object {
     "background-color": "#efeeea",
     "css-class": "mjml-body",
-    "width": "600px",
+    "width": "580px",
   },
   "children": Array [
     Object {
@@ -206,12 +206,12 @@ Object {
     "value": Object {
       "breakpoint": "480px",
       "font-family": "'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo",
-      "font-size": "14px",
-      "font-weight": "400",
+      "font-size": "16px",
+      "font-weight": "300",
       "fonts": Array [],
       "headAttributes": "",
       "headStyles": Array [],
-      "line-height": "1.7",
+      "line-height": "1.6",
       "responsive": true,
       "text-color": "#000000",
     },

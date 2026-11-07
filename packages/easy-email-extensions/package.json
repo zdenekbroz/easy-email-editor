@@ -85,7 +85,7 @@
     "final-form-set-field-touched": "^1.0.1",
     "is-hotkey": "^0.2.0",
     "lodash": "^4.17.21",
-    "mjml-browser": "^4.10.4",
+    "mjml-browser": "^5.4.1",
     "overlayscrollbars": "^1.13.2",
     "overlayscrollbars-react": "^0.3.0",
     "react-codemirror2": "^7.2.1",
